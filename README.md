@@ -103,4 +103,5 @@ which are described below in the Specifications.
 ## Versions
 
 Java: jdk-13.0.2
+
 Gradle: gradle-8.13
