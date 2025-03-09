@@ -1,5 +1,4 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-7f7980b617ed060a017424585567c406b6ee15c891e84e1186181d67ecf80aa0.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=10819715)
-# CS1501 Project 5
+# Color Quantization Project
 
 ## Goal:
 
@@ -37,14 +36,14 @@ a given input to the color from the reduced color palette it should be replaced 
 
 ## High-level description:
 
-Your program will read in a bitmap image (.bmp file) and perform color quantization on the image using two different
+The program will read in a bitmap image (.bmp file) and perform color quantization on the image using two different
 algorithms, `BASIC_BUCKETING` and `CLUSTERING`, while considering two different metrics, `SQUARED_EUCLIDEAN` and `COSINE_DISTANCE`,
 which are described below in the Specifications.
 
 ## Specifications:
 
-1. You will need to implement a class named `BucketingMapGenerator`
-   in `./app/src/main/java/cs1501_p5/BucketingMapGenerator.java` which implements the
+1. The class named `BucketingMapGenerator`
+   in `./app/src/main/java/cs1501_p5/BucketingMapGenerator.java` implements the
    interface `ColorMapGenerator_Inter`. This class will implement the method `computeColorMap` as shown
    in `ColorMapGenerator_Inter.java` in order to return a color map. The color is computed by taking the range of RGB values, treated as a single
    24-bit number, and
@@ -53,7 +52,7 @@ which are described below in the Specifications.
    bucket contains [0, 65535], bucket two contains [65536, 131071], etc. and the center of each bucket should be used as
    the final color of that bucket (e.g., 32768, and 98304 for the buckets above).
 
-1. You will need to implement two stateless classes (no attributes, only methods) which implement the interface `DistanceMetric_Inter`:
+1. Two stateless classes (no attributes, only methods) implement the interface `DistanceMetric_Inter`:
     * `SquaredEuclideanMetric` in `./app/src/main/java/cs1501_p5/SquaredEuclideanMetric.java`. This class will implement
       the `colorDistance` method as shown in `DistanceMetric_Inter.java` by returning the distance between the RGB
       values of two pixels using the squared
@@ -72,8 +71,8 @@ which are described below in the Specifications.
         * A full description of Cosine Distance can be found
           at [cosine_distance](https://en.wikipedia.org/wiki/Cosine_similarity#Cosine_Distance).
 
-1. You will need to implement a class named `ClusteringMapGenerator`
-   in `./app/src/main/java/cs1501_p5/ClusteringMapGenerator.java` which implements the
+1. The class named `ClusteringMapGenerator`
+   in `./app/src/main/java/cs1501_p5/ClusteringMapGenerator.java` implements the
    interface `ColorMapGenerator_Inter`. This class should have a constructor that accepts a class that implements
    the `DistanceMetric_Inter` interface to be used when computing distances between two pixels. `ClusteringMapGenerator` will perform
    color quantization via a variation of K-Means clustering as specified below:
@@ -91,8 +90,8 @@ which are described below in the Specifications.
 		  This clustering should produce a final color palette and then return 
 		  a map of original colors in `pixelArr` to values in the final color palette.
 
-1. You will need to implement a class named `ColorQuantizer` in
-   `./app/src/main/java/cs1501_p5/ColorQuantizer.java` which implements
+1. The class `ColorQuantizer` in
+   `./app/src/main/java/cs1501_p5/ColorQuantizer.java` implements
    `ColorQuantizer_Inter`. This class should have two constructors. The first
    should accept a two-dimensional Pixel array which represents the pixels from
    the .bmp file and an instance of a class that implements the
@@ -101,35 +100,4 @@ which are described below in the Specifications.
    instance of a class that implements the `ColorMapGenerator_Inter`
    interface which should be used to generate a color map.
 
-## Submission Guidelines:
 
-* **DO NOT** add `./app/build/` to your git repository.
-    * Leave the `./app/build.gradle` file there, however
-
-* Be sure to remember to push the latest copy of your code back to your GitHub
-  repository before submitting. To submit, log into Gradescope from Canvas and have GradeScope pull your repository from
-  GitHub.
-
-## Additional Notes/Hints:
-
-* You can use JCL classes to solve this project.
-
-## Grading Rubric
-
-| Feature                                                                                | Points 
-|----------------------------------------------------------------------------------------|--------
-| Squared Euclidean `colorDistance` works correctly                                      | 5
-| Cosine Distance `colorDistance` works correctly                                        | 5
-| `BucketingMapGenerator`'s `generateColorPalette` works correctly                       | 2
-| `BucketingMapGenerator`'s `generateColorMap` works correctly                           | 5
-| `ClusteringMapGenerator`'s `generateColorPalette` works correctly with Euclidean       | 10
-| `ClusteringMapGenerator`'s `generateColorPalette` works correctly with Cosine Distance | 10
-| `ClusteringMapGenerator`'s `generateColorMap` works correctly with Euclidean           | 10
-| `ClusteringMapGenerator`'s `generateColorMap` works correctly with Cosine Distance     | 10
-| `quantizeTo2DArray` works correctly with `BucketingMapGenerator`                       | 10
-| `quantizeToBMP` works correctly with `BucketingMapGenerator`                           | 3
-| `quantizeTo2DArray` works correctly with `ClusteringMapGenerator` and Eucliean         | 10
-| `quantizeToBMP` works correctly with `ClusteringMapGenerator` and Euclidean            | 3
-| `quantizeTo2DArray` works correctly with `ClusteringMapGenerator` and Cosine Distance  | 10
-| `quantizeToBMP` works correctly with `ClusteringMapGenerator` and Cosine Distance      | 2
-| Proper assignment submission                                                           | 5

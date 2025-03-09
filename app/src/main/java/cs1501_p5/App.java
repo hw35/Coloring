@@ -9,23 +9,30 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
 
+
 public class App{
+    DistanceMetric_Inter dm;
+    ColorMapGenerator_Inter generator;
+    ColorQuantizer cq;
+    ColorQuantizer cp;
     public static void main(String[] args) {
 
         try {
             // Load bitmap image
-            BufferedImage image = ImageIO.read(new File("build/resources/main/image.bmp"));
+            BufferedImage image = ImageIO.read(new File("app\\src\\main\\resources\\cat.bmp"));
 
             // Create pixel matrix
             Pixel[][] pixelMatrix = convertBitmapToPixelMatrix(image);
 
             // Save pixel matrix to file
-            savePixelMatrixToFile("build/resources/main/pixel_matrix.txt", pixelMatrix);
+            savePixelMatrixToFile("app\\src\\main\\resources\\pixel_matrix.txt", pixelMatrix);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+    
+
+
 
     public static Pixel[][] convertBitmapToPixelMatrix(BufferedImage image) {
         Pixel[][] pixelMatrix = new Pixel[image.getWidth()][image.getHeight()];
