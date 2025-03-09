@@ -100,7 +100,7 @@ which are described below in the Specifications.
    instance of a class that implements the `ColorMapGenerator_Inter`
    interface which should be used to generate a color map.
 
-## Versions
+## Versions:
 
 Java: jdk-13.0.2
 
