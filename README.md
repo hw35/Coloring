@@ -11,7 +11,7 @@ A bitmap is an array of binary
 data that represents the values of the pixels in an image. A full description of the .bmp file format can be found
 at [bmp file format](https://en.wikipedia.org/wiki/BMP_file_format).
 
-In this project, your program will be performing color quantization as defined
+In this project, the program will be performing color quantization as defined
 at [color_quantization](https://en.wikipedia.org/wiki/Color_quantization). In order to understand color quantization,
 let us first consider the following two bitmap images seen in the previous link:
 
@@ -34,7 +34,7 @@ compression for bmp images.
 To perform color quantization, you will produce *color maps*. These data structures should map each distinct color in
 a given input to the color from the reduced color palette it should be replaced with after quantization.
 
-## High-level description:
+## Program description:
 
 The program will read in a bitmap image (.bmp file) and perform color quantization on the image using two different
 algorithms, `BASIC_BUCKETING` and `CLUSTERING`, while considering two different metrics, `SQUARED_EUCLIDEAN` and `COSINE_DISTANCE`,
@@ -47,7 +47,7 @@ which are described below in the Specifications.
    interface `ColorMapGenerator_Inter`. This class will implement the method `computeColorMap` as shown
    in `ColorMapGenerator_Inter.java` in order to return a color map. The color is computed by taking the range of RGB values, treated as a single
    24-bit number, and
-   dividing into equal-sized buckets. Your code should treat the Red value as the most significant 8-bits, the Green value 
+   dividing into equal-sized buckets. The code treats the Red value as the most significant 8-bits, the Green value 
    as the middle 8-bits, and the Blue value as the least significant 8-bits. For instance, if 256 colors are desired, then the first
    bucket contains [0, 65535], bucket two contains [65536, 131071], etc. and the center of each bucket should be used as
    the final color of that bucket (e.g., 32768, and 98304 for the buckets above).
