@@ -3,7 +3,7 @@
 ## Goal:
 
 To gain a better understanding of bitmap images, color quantization, and clustering algorithms through practical
-implementation.
+implementation. To construct relationship between K-Means clustering algorithm to dimensionality reduction via Principal Component Analysis.
 
 ## Background:
 
